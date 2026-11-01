@@ -305,7 +305,8 @@ kbd {
   text-decoration: none;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a[aria-current="page"] {
   background: var(--surface-2);
   color: var(--text);
 }
@@ -1120,6 +1121,292 @@ td { color: var(--text-2); }
   transform: translate(-50%, 0);
 }
 
+/* Learn ----------------------------------------------------------------- */
+
+.learn-hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem); }
+
+.learn-hero .hero-inner { grid-template-columns: 1.2fr 0.8fr; }
+
+.learn-finish {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--accent);
+  text-align: center;
+}
+
+.learn-finish svg { width: 96px; height: 96px; }
+
+.learn-finish p { color: var(--text-2); font-size: 0.875rem; }
+
+.hero-draw path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: learn-draw 2.4s ease infinite alternate;
+}
+
+.lesson {
+  padding-block: 3.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.lesson-kicker {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lesson h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; }
+
+.lesson .lead { max-width: 62ch; margin-top: 0.75rem; color: var(--text-2); }
+
+.learn-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1.75rem;
+}
+
+.rule-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rule-list li {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.rule-list strong { display: block; }
+
+.glyph-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--accent);
+  text-align: center;
+}
+
+.glyph-card svg { width: min(100%, 220px); height: auto; }
+
+.glyph-card figcaption { color: var(--muted); font-family: var(--mono); font-size: 0.75rem; }
+
+.step-row {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.step-row .step { grid-template-columns: auto minmax(0, 1fr); }
+.step-row .step .glyph-inline { grid-column: 1 / -1; }
+
+.glyph-inline {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.glyph-inline svg { width: 72px; height: 72px; color: var(--accent); }
+
+.compare {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
+}
+
+.compare figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--accent);
+}
+
+.compare .ic { font-size: 64px; }
+.compare figcaption { color: var(--muted); font-size: 0.8125rem; }
+
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.motion-grid figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 1rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.motion-grid .ic { font-size: 32px; }
+.motion-grid figcaption { color: var(--text-2); font-size: 0.8125rem; text-align: center; }
+.motion-grid code { font-size: 0.7rem; }
+
+.draw-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.pad {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.pad .pad-ink { color: var(--accent); }
+#pad-path { fill: none; stroke: currentColor; }
+#pad-points { fill: var(--accent); }
+
+.draw-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.point-add {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.point-add label { display: grid; gap: 0.2rem; color: var(--muted); font-size: 0.75rem; }
+
+.point-add input[type="number"],
+.name-field input {
+  width: 5.5rem;
+  height: 38px;
+  padding: 0 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.name-field {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+.name-field input { width: 100%; }
+
+.draw-layout h3 { margin: 1rem 0 0.4rem; font-size: 0.95rem; }
+
+/* The check from the tutorial, painted the same way as a library icon. */
+.ic-my-check {
+  --ic-g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 L9 17 L4 12'/%3E%3C/svg%3E");
+}
+
+.motions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.motions label {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.motions input { position: absolute; opacity: 0; pointer-events: none; }
+
+.motions label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.motions label:has(input:checked) {
+  border-color: transparent;
+  background: var(--text);
+  color: var(--bg);
+}
+
+.result-stage {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
+  color: var(--accent);
+}
+
+.result-stage svg { width: 112px; height: 112px; }
+
+.result-stage .ic { font-size: 40px; color: var(--text); }
+
+.result-stage path.is-drawing { animation: learn-draw 1.5s ease forwards; }
+
+.draw-status {
+  margin-top: 0.75rem;
+  color: var(--text-2);
+}
+
+.draw-status.is-done { color: var(--text); font-weight: 600; }
+
+@keyframes learn-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 720px) {
+  .motion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Motion & responsive ---------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1140,12 +1427,16 @@ td { color: var(--text-2); }
   .mosaic { width: min(100%, 420px); transform: none; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .steps,
-  .reference { grid-template-columns: minmax(0, 1fr); }
+  .reference,
+  .learn-split,
+  .draw-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 640px) {
   .container { width: min(1200px, 100% - 2rem); }
-  .nav a:not(.nav-github) { display: none; }
+  .nav a:not(.nav-github):not(.nav-learn) { display: none; }
+  .learn-split,
+  .draw-layout { grid-template-columns: 1fr; }
   .nav-github span { display: none; }
   .hero-art { display: none; }
   .features { grid-template-columns: 1fr; }

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Draw your own icon — ok_icons</title>
+    <meta name="description" content="A short tutorial: draw a check mark on a 24px grid, turn it into a CSS icon, animate it, then draw one of your own.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0c10" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="ok-icons.min.css">
+    <link rel="stylesheet" href="ok-icons-weights.min.css">
+    <link rel="stylesheet" href="site.css">
+    <script src="theme.js"></script>
+    <script src="learn.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#lesson-grid">Skip to the tutorial</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./" aria-label="ok_icons home">
+          <span class="brand-mark"><i class="ic ic-sparkle ic-duotone" aria-hidden="true"></i></span>
+          <span class="brand-name">ok_icons</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="./#icons">Icons</a>
+          <a href="./#docs">Docs</a>
+          <a class="nav-learn" href="learn.html" aria-current="page">Learn</a>
+          <a href="https://github.com/ktsoaela/ok_icons" rel="noopener" class="nav-github">
+            <i class="ic ic-code" aria-hidden="true"></i><span>GitHub</span>
+          </a>
+          <button type="button" class="icon-button" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <i class="ic ic-moon only-light" aria-hidden="true"></i>
+            <i class="ic ic-sun only-dark" aria-hidden="true"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero learn-hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span>A short tutorial</p>
+            <h1>Draw an icon.<br><span class="gradient-text">Then make it move.</span></h1>
+            <p class="lead">
+              You will draw a check mark on a 24&nbsp;px grid, turn that drawing into one CSS class,
+              give it an animation, and then draw an icon of your own on the same grid.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#lesson-draw">Start drawing <i class="ic ic-arrow-right" aria-hidden="true"></i></a>
+              <a class="button button-ghost" href="#lesson-motion">Skip to animation</a>
+            </div>
+          </div>
+          <div class="learn-finish">
+            <svg class="hero-draw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 L9 17 L4 12"/>
+            </svg>
+            <p>This is the icon you will finish: a check that draws itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-grid" class="container lesson" aria-labelledby="grid-heading">
+        <p class="lesson-kicker">Lesson 1</p>
+        <h2 id="grid-heading">Start with a square sheet</h2>
+        <p class="lead">
+          Every ok_icons icon is a drawing on a 24 by 24 sheet. CSS does not invent the shape.
+          CSS only paints, sizes, and colors the drawing you make. The dashed square is the live area: keep the stroke inside it.
+        </p>
+        <div class="learn-split">
+          <ol class="rule-list">
+            <li><strong>The sheet is 24 × 24.</strong> Coordinates run from 0 at the top-left to 24 at the bottom-right. <code>x</code> goes right, <code>y</code> goes down.</li>
+            <li><strong>Stay inside 2 to 22.</strong> A stroke that touches the outer edge looks clipped when the icon sits in a line of text.</li>
+            <li><strong>The stroke is 2 units wide,</strong> with round ends and round corners. That is the regular weight. Light and bold are the same drawing with a thinner or thicker stroke.</li>
+            <li><strong>Color comes later.</strong> Draw with <code>currentColor</code>. The page’s text color then paints the icon, so one class works on any background.</li>
+          </ol>
+          <figure class="glyph-card">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect width="24" height="24" fill="url(#sheet-grid)"/>
+              <rect x="2" y="2" width="20" height="20" stroke="currentColor" stroke-width="0.08" stroke-dasharray="0.45 0.3" opacity="0.55"/>
+              <circle cx="20" cy="6" r="0.7" fill="currentColor"/>
+              <circle cx="9" cy="17" r="0.7" fill="currentColor"/>
+              <circle cx="4" cy="12" r="0.7" fill="currentColor"/>
+              <defs>
+                <pattern id="sheet-grid" width="1" height="1" patternUnits="userSpaceOnUse">
+                  <path d="M1 0 V1 H0" fill="none" stroke="currentColor" stroke-width="0.03" opacity="0.35"/>
+                </pattern>
+              </defs>
+            </svg>
+            <figcaption>Three dots. The check mark joins them.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="lesson-check" class="container lesson" aria-labelledby="check-heading">
+        <p class="lesson-kicker">Lesson 2</p>
+        <h2 id="check-heading">Draw a check mark in three moves</h2>
+        <p class="lead">
+          A path is a pen. <code>M</code> puts the pen down, and <code>L</code> draws a straight line.
+          The check is two lines through the three dots above.
+        </p>
+
+        <div class="step-row">
+          <article class="step">
+            <span class="step-n">1</span>
+            <div>
+              <h3>Put the pen down</h3>
+              <p>Start at the top of the long arm, <code>(20, 6)</code>.</p>
+            </div>
+            <div class="glyph-inline">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="20" cy="6" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+              <div class="code"><pre><code id="code-move">M20 6</code></pre><button type="button" class="icon-button" data-copy="#code-move" aria-label="Copy the move command"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+            </div>
+          </article>
+
+          <article class="step">
+            <span class="step-n">2</span>
+            <div>
+              <h3>Draw the long arm</h3>
+              <p>Line down-left to the bottom of the check, <code>(9, 17)</code>.</p>
+            </div>
+            <div class="glyph-inline">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M20 6 L9 17"/>
+              </svg>
+              <div class="code"><pre><code id="code-arm">M20 6 L9 17</code></pre><button type="button" class="icon-button" data-copy="#code-arm" aria-label="Copy the long arm"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+            </div>
+          </article>
+
+          <article class="step">
+            <span class="step-n">3</span>
+            <div>
+              <h3>Draw the short arm</h3>
+              <p>Line up-left to <code>(4, 12)</code>. That is the whole icon.</p>
+            </div>
+            <div class="glyph-inline">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6 L9 17 L4 12"/>
+              </svg>
+              <div class="code"><pre><code id="code-check">M20 6 L9 17 L4 12</code></pre><button type="button" class="icon-button" data-copy="#code-check" aria-label="Copy the check path"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="learn-split">
+          <div>
+            <h3>Wrap the path in the icon template</h3>
+            <p class="lead">Save this as <code>src/icons/my-check.svg</code>. The attributes are the house style: a 24&nbsp;px sheet, a stroke of 2, round caps.</p>
+            <div class="code"><pre><code id="code-svg">&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+  &lt;path d="M20 6 L9 17 L4 12"/&gt;
+&lt;/svg&gt;</code></pre><button type="button" class="icon-button" data-copy="#code-svg" aria-label="Copy the SVG"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+          </div>
+          <figure class="glyph-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 L9 17 L4 12"/>
+            </svg>
+            <figcaption>The finished drawing, before CSS.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="lesson-css" class="container lesson" aria-labelledby="css-heading">
+        <p class="lesson-kicker">Lesson 3</p>
+        <h2 id="css-heading">Let CSS paint it</h2>
+        <p class="lead">
+          An ok_icons icon is one element. The SVG becomes a stencil (<code>--ic-g</code>), and the element’s color shows through it.
+          Size is <code>font-size</code>. Color is <code>color</code>, or <code>--ic-color</code>.
+        </p>
+        <div class="code"><pre><code id="code-class">.ic-my-check {
+  --ic-g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 L9 17 L4 12'/%3E%3C/svg%3E");
+}</code></pre><button type="button" class="icon-button" data-copy="#code-class" aria-label="Copy the CSS class"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+        <p class="lead">The stencil is painted black because a mask uses opacity, not the stroke color. In the page you still write:</p>
+        <div class="code"><pre><code id="code-html">&lt;i class="ic ic-my-check" aria-hidden="true"&gt;&lt;/i&gt;</code></pre><button type="button" class="icon-button" data-copy="#code-html" aria-label="Copy the HTML"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+        <div class="compare" aria-label="Your class beside the library icon">
+          <figure>
+            <i class="ic ic-my-check" aria-hidden="true"></i>
+            <figcaption>Your class, <code>ic-my-check</code></figcaption>
+          </figure>
+          <figure>
+            <i class="ic ic-check" aria-hidden="true"></i>
+            <figcaption>The library’s <code>ic-check</code></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="lesson-motion" class="container lesson" aria-labelledby="motion-heading">
+        <p class="lesson-kicker">Lesson 4</p>
+        <h2 id="motion-heading">Make the icon move</h2>
+        <p class="lead">
+          Motion is another class on the same element. The stylesheet already defines five.
+          <code>--ic-duration</code> changes the speed. People who prefer reduced motion get a still icon.
+        </p>
+        <div class="motion-grid">
+          <figure>
+            <i class="ic ic-check ic-spin" aria-hidden="true"></i>
+            <figcaption>Spin<br><code>ic-spin</code></figcaption>
+          </figure>
+          <figure>
+            <i class="ic ic-check ic-pulse" aria-hidden="true"></i>
+            <figcaption>Pulse<br><code>ic-pulse</code></figcaption>
+          </figure>
+          <figure>
+            <i class="ic ic-check ic-beat" aria-hidden="true"></i>
+            <figcaption>Beat<br><code>ic-beat</code></figcaption>
+          </figure>
+          <figure>
+            <i class="ic ic-check ic-bounce" aria-hidden="true"></i>
+            <figcaption>Bounce<br><code>ic-bounce</code></figcaption>
+          </figure>
+          <figure>
+            <i class="ic ic-check ic-shake" aria-hidden="true"></i>
+            <figcaption>Shake<br><code>ic-shake</code></figcaption>
+          </figure>
+        </div>
+        <p class="lead">A drawing can also appear, the way a pen would draw it. That animation is the stroke itself: hide the line, then reveal it from start to end.</p>
+        <div class="learn-split">
+          <div class="code"><pre><code id="code-anim">.draw path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: draw-on 1.5s ease forwards;
+}
+
+@keyframes draw-on {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw path { animation: none; stroke-dashoffset: 0; }
+}</code></pre><button type="button" class="icon-button" data-copy="#code-anim" aria-label="Copy the draw-on animation"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+          <figure class="glyph-card">
+            <svg class="hero-draw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 L9 17 L4 12"/>
+            </svg>
+            <figcaption><code>stroke-dashoffset</code> walks the pen along the path.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="lesson-draw" class="container lesson" aria-labelledby="draw-heading">
+        <p class="lesson-kicker">Lesson 5</p>
+        <h2 id="draw-heading">Draw your own</h2>
+        <p class="lead">
+          Click the sheet to drop points. Each point continues the line. Two points is an icon.
+          Then pick a motion. Copy the SVG into <code>src/icons/</code>, or copy the CSS class and use it like the check.
+        </p>
+
+        <div class="draw-layout">
+          <div>
+            <svg id="pad" class="pad" viewBox="0 0 24 24" role="img" aria-label="24 by 24 drawing sheet. Click to add a point.">
+              <rect width="24" height="24" fill="url(#pad-grid)"/>
+              <rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" stroke-width="0.08" stroke-dasharray="0.45 0.3" opacity="0.45"/>
+              <path id="pad-path" class="pad-ink" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="pad-points" class="pad-ink"></g>
+              <defs>
+                <pattern id="pad-grid" width="1" height="1" patternUnits="userSpaceOnUse">
+                  <path d="M1 0 V1 H0" fill="none" stroke="currentColor" stroke-width="0.03" opacity="0.35"/>
+                </pattern>
+              </defs>
+            </svg>
+            <div class="draw-tools">
+              <button type="button" class="button button-ghost" id="use-check">Use the check</button>
+              <button type="button" class="button button-ghost" id="undo-point">Undo</button>
+              <button type="button" class="button button-ghost" id="clear-pad">Clear</button>
+            </div>
+            <form class="point-add" id="point-form">
+              <label>X <input id="pt-x" type="number" min="0" max="24" step="1" value="12" inputmode="numeric"></label>
+              <label>Y <input id="pt-y" type="number" min="0" max="24" step="1" value="12" inputmode="numeric"></label>
+              <button type="submit" class="button button-primary">Add point</button>
+            </form>
+          </div>
+
+          <div>
+            <div class="result-stage" aria-live="polite">
+              <svg id="your-stroke" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d=""/>
+              </svg>
+              <i class="ic" id="your-icon" hidden aria-hidden="true"></i>
+              <p class="muted small" id="point-count">No points yet</p>
+            </div>
+
+            <label class="name-field">Icon name
+              <input id="icon-name" type="text" value="my-icon" maxlength="40" autocomplete="off" spellcheck="false">
+            </label>
+
+            <fieldset class="name-field">
+              <legend>Motion</legend>
+              <div class="motions" id="motions">
+                <label><input type="radio" name="motion" value="still" checked> Still</label>
+                <label><input type="radio" name="motion" value="draw"> Draw on</label>
+                <label><input type="radio" name="motion" value="spin"> Spin</label>
+                <label><input type="radio" name="motion" value="pulse"> Pulse</label>
+                <label><input type="radio" name="motion" value="beat"> Beat</label>
+                <label><input type="radio" name="motion" value="bounce"> Bounce</label>
+                <label><input type="radio" name="motion" value="shake"> Shake</label>
+              </div>
+            </fieldset>
+
+            <p class="draw-status" id="draw-status">Click the sheet to place the first points of your icon.</p>
+
+            <h3>SVG</h3>
+            <div class="code"><pre><code id="out-svg">Draw at least two points.</code></pre><button type="button" class="icon-button" id="copy-svg" aria-label="Copy your SVG"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+            <h3>CSS</h3>
+            <div class="code"><pre><code id="out-css">The class appears once the path has two points.</code></pre><button type="button" class="icon-button" id="copy-css" aria-label="Copy your CSS"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+          </div>
+        </div>
+        <noscript><p class="empty">The drawing sheet needs JavaScript. The check-mark lesson above does not.</p></noscript>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p><i class="ic ic-pencil" aria-hidden="true"></i> Draw on a 24 px grid. CSS paints it and moves it.</p>
+        <p class="muted"><a href="./">Back to the icons</a></p>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
