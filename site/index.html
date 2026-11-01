@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>ok_icons — beautiful icons, just CSS</title>
+    <meta name="description" content="A crafted set of 110 icons in one 5 kB stylesheet. Three weights, duotone, standalone SVGs. No fonts, no JavaScript.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0c10" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="ok_icons — beautiful icons, just CSS">
+    <meta property="og:description" content="110 crafted icons, three weights, duotone. One stylesheet, no fonts, no JavaScript.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="ok-icons.min.css">
+    <link rel="stylesheet" href="ok-icons-weights.min.css">
+    <link rel="stylesheet" href="site.css">
+    <script src="theme.js"></script>
+    <script src="icons.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#icons">Skip to icons</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./" aria-label="ok_icons home">
+          <span class="brand-mark"><i class="ic ic-sparkle ic-duotone" aria-hidden="true"></i></span>
+          <span class="brand-name">ok_icons</span>
+          <span class="badge" id="version"></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#icons">Icons</a>
+          <a href="#docs">Docs</a>
+          <a href="https://github.com/ktsoaela/ok_icons" rel="noopener" class="nav-github">
+            <i class="ic ic-code" aria-hidden="true"></i><span>GitHub</span>
+          </a>
+          <button type="button" class="icon-button" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <i class="ic ic-moon only-light" aria-hidden="true"></i>
+            <i class="ic ic-sun only-dark" aria-hidden="true"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero ------------------------------------------------------------ -->
+      <section class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="hero-count">110</span> icons · 3 weights · duotone</p>
+            <h1>Beautiful icons.<br><span class="gradient-text">Just CSS.</span></h1>
+            <p class="lead">
+              A crafted icon set on a 24&nbsp;px grid, delivered as one stylesheet:
+              <strong id="hero-size">about 5&nbsp;kB gzipped</strong>. No icon fonts, no JavaScript, no extra requests.
+              Write <code>&lt;i class="ic ic-heart"&gt;</code> and you’re done.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#icons">
+                Browse icons <i class="ic ic-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a class="button button-ghost" href="#docs">Get started</a>
+            </div>
+            <div class="install">
+              <code id="install-cmd">npm install github:ktsoaela/ok_icons</code>
+              <button type="button" class="icon-button" data-copy="#install-cmd" aria-label="Copy install command">
+                <i class="ic ic-copy" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="mosaic" id="mosaic"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -------------------------------------------------------- -->
+      <section class="container features" aria-label="Features">
+        <article class="feature">
+          <i class="ic ic-layers ic-duotone" aria-hidden="true"></i>
+          <h2>One element, one class</h2>
+          <p>Icons are plain elements painted with <code>currentColor</code>. Size them with <code>font-size</code>, color them with <code>color</code>.</p>
+        </article>
+        <article class="feature">
+          <i class="ic ic-sliders ic-duotone" aria-hidden="true"></i>
+          <h2>Three weights</h2>
+          <p>Light, regular and bold strokes. Set them per icon or once on a container: <code>class="ic-bold"</code>.</p>
+        </article>
+        <article class="feature">
+          <i class="ic ic-sparkle ic-duotone" aria-hidden="true"></i>
+          <h2>Duotone, for free</h2>
+          <p>Add <code>ic-duotone</code> for a tinted fill. Pick any second color with <code>--ic-secondary</code>.</p>
+        </article>
+        <article class="feature">
+          <i class="ic ic-lightning ic-duotone" aria-hidden="true"></i>
+          <h2>Tiny and fast</h2>
+          <p>One cached stylesheet. No font loading, no layout shift, no flash of missing glyphs.</p>
+        </article>
+        <article class="feature">
+          <i class="ic ic-eye ic-duotone" aria-hidden="true"></i>
+          <h2>Accessible</h2>
+          <p>Works with screen readers, Windows High Contrast mode and users who prefer reduced motion.</p>
+        </article>
+        <article class="feature">
+          <i class="ic ic-file-text ic-duotone" aria-hidden="true"></i>
+          <h2>SVG when you need it</h2>
+          <p>Every icon also ships as a standalone SVG, in a sprite and as JSON for your framework.</p>
+        </article>
+      </section>
+
+      <!-- Gallery --------------------------------------------------------- -->
+      <section id="icons" class="gallery-section" aria-labelledby="icons-heading">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="icons-heading">Icons</h2>
+            <p class="muted" id="count" aria-live="polite"></p>
+          </div>
+
+          <form class="toolbar" id="controls" role="search" aria-label="Filter and customize icons">
+            <label class="search">
+              <span class="visually-hidden">Search icons</span>
+              <i class="ic ic-search" aria-hidden="true"></i>
+              <input type="search" id="search" placeholder="Search 110 icons…" autocomplete="off" spellcheck="false">
+              <kbd aria-hidden="true">/</kbd>
+            </label>
+
+            <fieldset class="segmented" aria-label="Weight">
+              <legend class="visually-hidden">Weight</legend>
+              <label><input type="radio" name="weight" value="light"><span>Light</span></label>
+              <label><input type="radio" name="weight" value="regular" checked><span>Regular</span></label>
+              <label><input type="radio" name="weight" value="bold"><span>Bold</span></label>
+            </fieldset>
+
+            <fieldset class="segmented" aria-label="Style">
+              <legend class="visually-hidden">Style</legend>
+              <label><input type="radio" name="style" value="outline" checked><span>Outline</span></label>
+              <label><input type="radio" name="style" value="duotone"><span>Duotone</span></label>
+            </fieldset>
+
+            <label class="slider">
+              <span class="visually-hidden">Icon size</span>
+              <i class="ic ic-image ic-sm" aria-hidden="true"></i>
+              <input type="range" id="size" min="16" max="64" step="4" value="28">
+              <output id="size-value" for="size">28</output>
+            </label>
+
+            <fieldset class="swatches" aria-label="Color">
+              <legend class="visually-hidden">Color</legend>
+              <label title="Default"><input type="radio" name="color" value="" checked><span class="swatch swatch-auto"></span></label>
+              <label title="Indigo"><input type="radio" name="color" value="#5b5bf7"><span class="swatch" data-c="indigo"></span></label>
+              <label title="Pink"><input type="radio" name="color" value="#e5488f"><span class="swatch" data-c="pink"></span></label>
+              <label title="Amber"><input type="radio" name="color" value="#e8a317"><span class="swatch" data-c="amber"></span></label>
+              <label title="Teal"><input type="radio" name="color" value="#14a38b"><span class="swatch" data-c="teal"></span></label>
+              <label class="swatch-custom" title="Custom color">
+                <span class="visually-hidden">Custom color</span>
+                <input type="color" id="color" value="#5b5bf7">
+              </label>
+            </fieldset>
+          </form>
+
+          <div class="chips" id="chips" role="group" aria-label="Category"></div>
+
+          <div id="gallery" class="gallery"></div>
+          <div id="empty" class="empty" hidden>
+            <i class="ic ic-search ic-duotone" aria-hidden="true"></i>
+            <p>No icons match “<span id="empty-term"></span>”.</p>
+            <a href="https://github.com/ktsoaela/ok_icons/issues/new?labels=icon-request" rel="noopener">Request an icon →</a>
+          </div>
+          <noscript><p class="empty">The gallery needs JavaScript. The icons themselves don’t.</p></noscript>
+        </div>
+      </section>
+
+      <!-- Docs ------------------------------------------------------------ -->
+      <section id="docs" class="container docs" aria-labelledby="docs-heading">
+        <div class="section-head">
+          <h2 id="docs-heading">Get started</h2>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <span class="step-n">1</span>
+            <h3>Add the stylesheet</h3>
+            <div class="code"><pre><code id="code-cdn">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ktsoaela/ok_icons@v1/dist/ok-icons.min.css"&gt;</code></pre><button type="button" class="icon-button" data-copy="#code-cdn" aria-label="Copy"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+            <p class="muted">Need light or bold? Also add <code>ok-icons-weights.min.css</code>. With npm: <code>import 'ok-icons'</code>.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-n">2</span>
+            <h3>Use an icon</h3>
+            <div class="code"><pre><code id="code-use">&lt;i class="ic ic-heart" aria-hidden="true"&gt;&lt;/i&gt;
+
+&lt;button aria-label="Settings"&gt;
+  &lt;i class="ic ic-settings ic-bold" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre><button type="button" class="icon-button" data-copy="#code-use" aria-label="Copy"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+          </article>
+
+          <article class="step">
+            <span class="step-n">3</span>
+            <h3>Make it yours</h3>
+            <div class="code"><pre><code id="code-style">.toolbar {
+  --ic-size: 20px;
+  --ic-color: #5b5bf7;
+  --ic-secondary: #e5488f;  /* duotone fill */
+}</code></pre><button type="button" class="icon-button" data-copy="#code-style" aria-label="Copy"><i class="ic ic-copy" aria-hidden="true"></i></button></div>
+          </article>
+        </div>
+
+        <div class="reference">
+          <div>
+            <h3>Classes</h3>
+            <table>
+              <tbody>
+                <tr><th scope="row"><code>ic-light</code> <code>ic-bold</code></th><td>Stroke weight. Works on the icon or any container.</td></tr>
+                <tr><th scope="row"><code>ic-duotone</code></th><td>Adds a tinted fill. Also works on containers.</td></tr>
+                <tr><th scope="row"><code>ic-xs</code> … <code>ic-2xl</code></th><td>Sizes: 12, 16, 24, 32, 48 and 64 px.</td></tr>
+                <tr><th scope="row"><code>ic-rotate-90</code> <code>ic-flip-h</code></th><td>Rotate (90/180/270) or mirror (h/v).</td></tr>
+                <tr><th scope="row"><code>ic-spin</code> <code>ic-pulse</code> <code>ic-beat</code> <code>ic-bounce</code> <code>ic-shake</code></th><td>Animations. Turned off for users who prefer reduced motion.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Custom properties</h3>
+            <table>
+              <tbody>
+                <tr><th scope="row"><code>--ic-size</code></th><td>Icon size. Default <code>1em</code>.</td></tr>
+                <tr><th scope="row"><code>--ic-color</code></th><td>Icon color. Default <code>currentColor</code>.</td></tr>
+                <tr><th scope="row"><code>--ic-secondary</code></th><td>Duotone fill color.</td></tr>
+                <tr><th scope="row"><code>--ic-secondary-opacity</code></th><td>Duotone fill opacity. Default <code>0.28</code>.</td></tr>
+                <tr><th scope="row"><code>--ic-duration</code></th><td>Animation duration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-strip" aria-label="Animation examples">
+          <span><i class="ic ic-loader ic-spin" aria-hidden="true"></i> spin</span>
+          <span><i class="ic ic-heart ic-beat ic-duotone" aria-hidden="true"></i> beat</span>
+          <span><i class="ic ic-bell ic-shake" aria-hidden="true"></i> shake</span>
+          <span><i class="ic ic-arrow-down ic-bounce" aria-hidden="true"></i> bounce</span>
+          <span><i class="ic ic-wifi ic-pulse" aria-hidden="true"></i> pulse</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p><i class="ic ic-sparkle" aria-hidden="true"></i> ok_icons · MIT licensed · by Khotso Tsoaela</p>
+        <p class="muted">
+          Inspired by <a href="https://blog.truthlabs.com/how-to-make-complex-icons-with-only-css-e135e6dc2c5e" rel="noopener">Drew Vosburg’s CSS icon techniques</a>.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Icon detail dialog ------------------------------------------------ -->
+    <dialog id="detail" class="detail" aria-labelledby="detail-name">
+      <div class="detail-inner">
+        <div class="detail-preview" id="detail-preview">
+          <i class="ic" id="detail-icon" aria-hidden="true"></i>
+          <div class="detail-sizes" id="detail-sizes"></div>
+        </div>
+        <div class="detail-info">
+          <div class="detail-head">
+            <div>
+              <p class="muted small" id="detail-category"></p>
+              <h2 id="detail-name"></h2>
+            </div>
+            <div class="detail-nav">
+              <button type="button" class="icon-button" id="detail-prev" aria-label="Previous icon"><i class="ic ic-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" class="icon-button" id="detail-next" aria-label="Next icon"><i class="ic ic-chevron-right" aria-hidden="true"></i></button>
+              <button type="button" class="icon-button" id="detail-close" aria-label="Close"><i class="ic ic-close" aria-hidden="true"></i></button>
+            </div>
+          </div>
+          <p class="tags" id="detail-tags"></p>
+
+          <div class="tabs" role="tablist" aria-label="Snippet format">
+            <button type="button" role="tab" id="tab-html" aria-selected="true" aria-controls="snippet" data-format="html">HTML</button>
+            <button type="button" role="tab" id="tab-svg" aria-selected="false" aria-controls="snippet" data-format="svg" tabindex="-1">SVG</button>
+            <button type="button" role="tab" id="tab-sprite" aria-selected="false" aria-controls="snippet" data-format="sprite" tabindex="-1">Sprite</button>
+          </div>
+          <div class="code" role="tabpanel" id="snippet-panel" aria-labelledby="tab-html">
+            <pre><code id="snippet"></code></pre>
+          </div>
+          <div class="detail-actions">
+            <button type="button" class="button button-primary" id="copy-snippet" autofocus><i class="ic ic-copy" aria-hidden="true"></i> Copy</button>
+            <button type="button" class="button button-ghost" id="download-svg"><i class="ic ic-download" aria-hidden="true"></i> Download SVG</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

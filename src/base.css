@@ -1,0 +1,178 @@
+/*
+ * ok_icons — base styles.
+ *
+ * Every icon is an SVG drawing (src/icons/*.svg) embedded in the stylesheet
+ * as a CSS mask, so an icon is one element, painted with `currentColor`,
+ * with no font files, image requests or JavaScript.
+ *
+ * Each `.ic-<name>` class only sets custom properties:
+ *   --ic-g   glyph (regular weight)
+ *   --ic-gl  glyph (light weight)   — ok-icons-weights.css
+ *   --ic-gb  glyph (bold weight)    — ok-icons-weights.css
+ *   --ic-d   duotone fill shapes
+ * The rules below paint them: ::after draws the glyph, ::before the
+ * optional duotone layer.
+ *
+ * Icon rules are generated from src/icons/*.svg by scripts/build.mjs.
+ */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+.ic {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-size: var(--ic-size, 1em);
+  font-style: normal;
+  line-height: 1;
+  color: var(--ic-color, currentColor);
+  vertical-align: var(--ic-align, -0.125em);
+  /* Hide any text label visually; it stays available to assistive tech. */
+  white-space: nowrap;
+  text-indent: -9999em;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.ic::before,
+.ic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+/* Glyph. The fallback keeps an unknown icon name invisible instead of a square. */
+.ic::after {
+  mask-image: var(--ic-g, linear-gradient(transparent 0 0));
+}
+
+/* Duotone layer: hidden unless .ic-duotone is set on the icon or an ancestor. */
+.ic::before {
+  display: none;
+  background: var(--ic-secondary, currentColor);
+  opacity: var(--ic-secondary-opacity, 0.28);
+  mask-image: var(--ic-d, linear-gradient(transparent 0 0));
+}
+
+.ic-duotone .ic::before,
+.ic.ic-duotone::before {
+  display: block;
+}
+
+.ic-outline .ic::before,
+.ic.ic-outline::before {
+  display: none;
+}
+
+/* ==========================================================================
+   Weights (light and bold glyphs ship in ok-icons-weights.css; without it
+   these classes fall back to the regular weight)
+   ========================================================================== */
+
+.ic-light .ic::after { mask-image: var(--ic-gl, var(--ic-g, linear-gradient(transparent 0 0))); }
+.ic-regular .ic::after { mask-image: var(--ic-g, linear-gradient(transparent 0 0)); }
+.ic-bold .ic::after { mask-image: var(--ic-gb, var(--ic-g, linear-gradient(transparent 0 0))); }
+
+.ic.ic-light::after { mask-image: var(--ic-gl, var(--ic-g, linear-gradient(transparent 0 0))); }
+.ic.ic-regular::after { mask-image: var(--ic-g, linear-gradient(transparent 0 0)); }
+.ic.ic-bold::after { mask-image: var(--ic-gb, var(--ic-g, linear-gradient(transparent 0 0))); }
+
+/* ==========================================================================
+   Sizes
+   ========================================================================== */
+
+.ic-xs { --ic-size: 0.75rem; }
+.ic-sm { --ic-size: 1rem; }
+.ic-md { --ic-size: 1.5rem; }
+.ic-lg { --ic-size: 2rem; }
+.ic-xl { --ic-size: 3rem; }
+.ic-2xl { --ic-size: 4rem; }
+
+/* ==========================================================================
+   Transforms
+   ========================================================================== */
+
+.ic-rotate-90 { transform: rotate(90deg); }
+.ic-rotate-180 { transform: rotate(180deg); }
+.ic-rotate-270 { transform: rotate(270deg); }
+.ic-flip-h { transform: scaleX(-1); }
+.ic-flip-v { transform: scaleY(-1); }
+
+/* ==========================================================================
+   Interaction and animation
+   ========================================================================== */
+
+.ic-hover {
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.ic-hover:hover,
+a:hover > .ic-hover,
+button:hover > .ic-hover {
+  opacity: var(--ic-hover-opacity, 0.6);
+}
+
+.ic-spin { animation: ic-spin var(--ic-duration, 1s) linear infinite; }
+.ic-pulse { animation: ic-pulse var(--ic-duration, 1.6s) ease-in-out infinite; }
+.ic-beat { animation: ic-beat var(--ic-duration, 1.2s) ease-in-out infinite; }
+.ic-bounce { animation: ic-bounce var(--ic-duration, 1s) cubic-bezier(0.28, 0.84, 0.42, 1) infinite; }
+.ic-shake { animation: ic-shake var(--ic-duration, 1.2s) ease-in-out infinite; transform-origin: 50% 10%; }
+
+@keyframes ic-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ic-pulse {
+  50% { opacity: 0.35; }
+}
+
+@keyframes ic-beat {
+  0%, 60%, 100% { transform: scale(1); }
+  20% { transform: scale(1.18); }
+  40% { transform: scale(0.96); }
+}
+
+@keyframes ic-bounce {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-0.25em); }
+  70% { transform: translateY(0); }
+  85% { transform: translateY(-0.06em); }
+}
+
+@keyframes ic-shake {
+  0%, 50%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(-12deg); }
+  20%, 40% { transform: rotate(12deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ic-spin,
+  .ic-pulse,
+  .ic-beat,
+  .ic-bounce,
+  .ic-shake { animation: none; }
+
+  .ic-hover { transition: none; }
+}
+
+/* Windows High Contrast / forced colors: keep icons visible. */
+@media (forced-colors: active) {
+  .ic,
+  .ic::before,
+  .ic::after {
+    forced-color-adjust: none;
+  }
+
+  .ic { color: CanvasText; }
+}

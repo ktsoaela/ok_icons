@@ -1,0 +1,54 @@
+{
+  "name": "ok-icons",
+  "version": "1.0.0",
+  "description": "A crafted set of 110 icons delivered as one CSS file: three weights, duotone, no fonts, no JavaScript.",
+  "keywords": [
+    "icons",
+    "css",
+    "css-icons",
+    "svg-icons",
+    "icon-library",
+    "duotone",
+    "sprite"
+  ],
+  "homepage": "https://ktsoaela.github.io/ok_icons/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktsoaela/ok_icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ktsoaela/ok_icons/issues"
+  },
+  "license": "MIT",
+  "author": "Khotso Tsoaela",
+  "type": "module",
+  "style": "dist/ok-icons.min.css",
+  "main": "dist/ok-icons.min.css",
+  "exports": {
+    ".": "./dist/ok-icons.min.css",
+    "./css": "./dist/ok-icons.css",
+    "./min.css": "./dist/ok-icons.min.css",
+    "./weights.css": "./dist/ok-icons-weights.min.css",
+    "./icons.json": "./dist/icons.json",
+    "./sprite.svg": "./dist/sprite.svg",
+    "./svg/*": "./dist/svg/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "test": "node scripts/build.mjs && node --test \"test/*.test.mjs\"",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "lightningcss": "^1.28.0"
+  }
+}
