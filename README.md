@@ -149,10 +149,6 @@ The demo site deploys to GitHub Pages from `main`. Enable it once under **Settin
 
 New icons, fixes and ideas are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the drawing guidelines.
 
-## Acknowledgments
-
-Special thanks to [Drew Vosburg](https://blog.truthlabs.com/how-to-make-complex-icons-with-only-css-e135e6dc2c5e) from Perficient Digital Labs, whose writing on CSS icons started this project.
-
 ## License
 
 [MIT](LICENSE) © Khotso Tsoaela
