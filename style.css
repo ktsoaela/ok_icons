@@ -1,3 +1,44 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  text-align: center;
+  background: #4CAF50;
+  color: white;
+  padding: 20px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+h2 {
+  margin-top: 20px;
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+main {
+  padding: 20px;
+}
+
+.icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
 .ic {
   font-size: 32px;
   color: transparent;
@@ -10,19 +51,29 @@
   font-style: normal;
   height: 1em;
   width: 1em;
+  scale: 150%;
   mix-blend-mode: multiply;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
-.ic:before, .ic:after {
-  /* BACKGROUND COLOR */
+.ic:before,
+.ic:after {
   background-color: #fff;
   border-color: #fff;
   color: #fff;
   content: '';
   position: absolute;
   display: block;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+.ic:hover:before,
+.ic:hover:after {
+  background-color: #777;
+  border-color: #777;
+}
+
+/* View and Control Icons */
 .ic.ic-eye:before {
   width: 0.75em;
   height: 0.75em;
@@ -30,7 +81,8 @@
   left: 0.125em;
   background-color: #000;
   border-radius: 0 80% 0 80%;
-  transform: rotate(-45deg); }
+  transform: rotate(-45deg);
+}
 
 .ic.ic-eye:after {
   width: 0.5em;
@@ -40,42 +92,39 @@
   border: 0.125em solid;
   border-radius: 100%;
   background-color: transparent;
-  transform: scale(0.8); }
+  transform: scale(0.8);
+}
 
-.ic.ic-eye:hover:before {
-  background-color: #777; }
-
-.ic.ic-lightning:before, .ic.ic-lightning:after {
+.ic.ic-lightning:before,
+.ic.ic-lightning:after {
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 0.5em 0.25em 0 0;
   border-color: transparent #000 transparent transparent;
   border-top: 0.625em solid;
-  background-color: transparent; }
-
-.ic.ic-lightning:hover:before, .ic.ic-lightning:hover:after {
-  border-color: transparent #777 transparent transparent; }
+  background-color: transparent;
+}
 
 .ic.ic-lightning:before {
   top: -0.0625em;
   left: 0.375em;
-  transform: rotate(15deg); }
+  transform: rotate(15deg);
+}
 
 .ic.ic-lightning:after {
   top: 0.4375em;
   left: 0.4375em;
-  transform: rotate(195deg); }
+  transform: rotate(195deg);
+}
 
 .ic.ic-pencil:before {
   background: linear-gradient(to bottom, #000 0%, #000 15%, #fff 15%, #fff 25%, #000 25%, #000 100%);
   height: 0.75em;
   width: 0.1875em;
   transform: rotate(45deg);
-  left: 0.4375em; }
-
-.ic.ic-pencil:hover:before {
-  background: linear-gradient(to bottom, #777 0%, #777 15%, #fff 15%, #fff 25%, #777 25%, #777 100%); }
+  left: 0.4375em;
+}
 
 .ic.ic-pencil:after {
   top: 0.625em;
@@ -84,10 +133,8 @@
   background: transparent;
   border-width: 0.1875em 0.125em 0 0.125em;
   border-color: #000 transparent transparent transparent;
-  transform: rotate(45deg) translateY(0.03125em); }
-
-.ic.ic-pencil:hover:after {
-  border-color: #777 transparent transparent transparent; }
+  transform: rotate(45deg) translateY(0.03125em);
+}
 
 .ic.ic-hamburger:before {
   border-color: #000;
@@ -97,7 +144,8 @@
   background: transparent;
   border-style: solid;
   top: 0.125em;
-  left: 0; }
+  left: 0;
+}
 
 .ic.ic-hamburger:after {
   border-color: #000;
@@ -107,176 +155,87 @@
   border-width: 0.125em 0 0 0;
   border-style: solid;
   top: 0.4375em;
-  left: 0; }
-
-.ic.ic-hamburger:hover:before, .ic.ic-hamburger:hover:after {
-  border-color: #777; }
+  left: 0;
+}
 
 .ic.ic-expand {
   transform: scale(0.75);
-  background-color: #000; }
+  background-color: #000;
+}
 
 .ic.ic-expand:before {
   width: 1em;
   height: 1em;
-  transform: scale(0.9) rotate(45deg); }
+  transform: scale(0.9) rotate(45deg);
+}
 
 .ic.ic-expand:after {
   width: 1em;
   height: 1em;
   top: 0;
-  background: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%), linear-gradient(135deg, transparent 45%, #000 45%, #000 55%, transparent 55%); }
+  background: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%), linear-gradient(135deg, transparent 45%, #000 45%, #000 55%, transparent 55%);
+}
 
-.ic.ic-expand:hover {
-  background-color: #777; }
-
-.ic.ic-expand:hover:after {
-  background: linear-gradient(45deg, transparent 45%, #777 45%, #777 55%, transparent 55%), linear-gradient(135deg, transparent 45%, #777 45%, #777 55%, transparent 55%); }
-
-.ic.ic-microphone {
-  background: linear-gradient(90deg, #fff 0%, #fff 31.25%, transparent 31.25%, transparent 62.5%, #fff 62.5%), linear-gradient(0deg, #fff 0%, #fff 6.25%, #000 6.25%, #000 12.5%, transparent 12.5%, transparent 50%, #fff 50%), linear-gradient(90deg, transparent 43.75%, #000 43.75%, #000 50%, transparent 50%); }
-
-.ic.ic-microphone:before, .ic.ic-microphone:after {
-  background-color: #000;
-  width: 0.4375em;
-  height: 0.75em;
-  left: 0.25em;
-  top: 0;
-  border-radius: 0.375em;
-  border: 0.0625em solid #fff; }
-
-.ic.ic-microphone:before {
-  border-color: #000;
-  width: 0.5625em;
-  left: 0.1875em;
-  height: 0.4375em;
-  border-radius: 0 0 0.625em 0.625em;
-  top: 0.375em; }
-
-.ic.ic-microphone:hover {
-  background: linear-gradient(90deg, #fff 0%, #fff 31.25%, transparent 31.25%, transparent 62.5%, #fff 62.5%), linear-gradient(0deg, #fff 0%, #fff 6.25%, #777 6.25%, #777 12.5%, transparent 12.5%, transparent 50%, #fff 50%), linear-gradient(90deg, transparent 43.75%, #777 43.75%, #777 50%, transparent 50%); }
-
-.ic.ic-microphone:hover:before {
-  border-color: #777;
-  background-color: #777; }
-
-.ic.ic-microphone:hover:after {
-  background-color: #777; }
-
-.ic.ic-home {
-  background: linear-gradient(90deg, #fff 0%, #fff 12.5%, transparent 12.5%, transparent 87.5%, #fff 87.5%), linear-gradient(0deg, transparent 0%, transparent 50%, #000 50%, #000 62.5%, transparent 62.5%), linear-gradient(90deg, transparent 0%, transparent 43.75%, #fff 43.75%, #fff 56.25%, transparent 56.25%), linear-gradient(0deg, #fff 0%, #fff 12.5%, #000 12.5%, #000 62.5%, transparent 62.5%); }
-
-.ic.ic-home:before {
-  border-style: solid;
-  border-width: 0 0.5em 0.375em 0.5em;
-  border-color: transparent transparent #000 transparent;
-  top: 0.0625em; }
-
-.ic.ic-home:after {
-  width: 0.125em;
-  top: 0.125em;
-  right: 0.1875em;
-  height: 0.375em;
-  background-color: #000; }
-
-.ic.ic-home:hover {
-  background: linear-gradient(90deg, #fff 0%, #fff 12.5%, transparent 12.5%, transparent 87.5%, #fff 87.5%), linear-gradient(0deg, transparent 0%, transparent 50%, #777 50%, #777 62.5%, transparent 62.5%), linear-gradient(90deg, transparent 0%, transparent 43.75%, #fff 43.75%, #fff 56.25%, transparent 56.25%), linear-gradient(0deg, #fff 0%, #fff 12.5%, #777 12.5%, #777 62.5%, transparent 62.5%); }
-
-.ic.ic-home:hover:before {
-  border-color: transparent transparent #777 transparent; }
-
-.ic.ic-home:hover:after {
-  background-color: #777; }
-
+/* Media Control Icons */
 .ic.ic-play:before {
   border-style: solid;
   border-width: 0.375em 0 0.375em 0.75em;
   border-color: transparent transparent transparent #000;
   top: 0.125em;
-  left: 0.1875em; }
+  left: 0.1875em;
+}
 
-.ic.ic-play:hover:before {
-  border-color: transparent transparent transparent #777; }
-
-.ic.ic-pause:before, .ic.ic-pause:after {
+.ic.ic-pause:before,
+.ic.ic-pause:after {
   top: 0.125em;
   left: 0.125em;
   width: 0.3125em;
   height: 0.75em;
-  background-color: #000; }
+  background-color: #000;
+}
 
 .ic.ic-pause:after {
   right: 0.125em;
-  left: auto; }
-
-.ic.ic-pause:hover:before, .ic.ic-pause:hover:after {
-  background-color: #777; }
+  left: auto;
+}
 
 .ic.ic-stop:before {
   top: 0.125em;
   left: 0.125em;
   width: 0.75em;
   height: 0.75em;
-  background-color: #000; }
-
-.ic.ic-stop:hover:before {
-  background-color: #777; }
+  background-color: #000;
+}
 
 .ic.ic-skip {
-  background: linear-gradient(0deg, #fff 0%, #fff 12.5%, transparent 12.5%, transparent 87.5%, #fff 87.5%), linear-gradient(90deg, transparent 87.5%, #000 87.5%); }
+  background: linear-gradient(0deg, #fff 0%, #fff 12.5%, transparent 12.5%, transparent 87.5%, #fff 87.5%), linear-gradient(90deg, transparent 87.5%, #000 87.5%);
+}
 
-.ic.ic-skip:hover {
-  background: linear-gradient(0deg, #fff 0%, #fff 12.5%, transparent 12.5%, transparent 87.5%, #fff 87.5%), linear-gradient(90deg, transparent 87.5%, #777 87.5%); }
-
-.ic.ic-skip:before, .ic.ic-skip:after, .ic.ic-fastforward:before, .ic.ic-fastforward:after {
+.ic.ic-skip:before,
+.ic.ic-skip:after,
+.ic.ic-fastforward:before,
+.ic.ic-fastforward:after {
   border-style: solid;
   border-width: 0.375em 0 0.375em 0.5em;
   border-color: transparent transparent transparent #000;
   top: 0.125em;
-  left: 0px; }
+  left: 0px;
+}
 
 .ic.ic-skip:after {
   left: 0.4375em;
-  mix-blend-mode: multiply; }
-
-.ic.ic-skip:hover:before, .ic.ic-skip:hover:after, .ic.ic-fastforward:hover:before, .ic.ic-fastforward:hover:after {
-  border-color: transparent transparent transparent #777; }
+  mix-blend-mode: multiply;
+}
 
 .ic.ic-fastforward:before {
-  left: 0.125em; }
+  left: 0.125em;
+}
 
 .ic.ic-fastforward:after {
-  left: 0.5em; }
+  left: 0.5em;
+}
 
-.ic.ic-cloud {
-  background: radial-gradient(circle at 0.6875em 0.41563em, #000 0%, #000 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #000 0%, #000 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #000 43.75%, #000 81.25%, transparent 81.25%); }
-
-.ic.ic-cloud:hover {
-  background: radial-gradient(circle at 0.6875em 0.41563em, #777 0%, #777 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #777 0%, #777 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #777 0%, #777 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #777 0%, #777 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #777 43.75%, #777 81.25%, transparent 81.25%); }
-
-.ic.ic-cloud2 {
-  background: radial-gradient(circle at 0.6875em 0.41563em, #000 0%, #000 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #000 0%, #000 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #000 43.75%, #000 81.25%, transparent 81.25%); }
-
-.ic.ic-cloud2:hover {
-  background: radial-gradient(circle at 0.6875em 0.41563em, #777 0%, #777 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #777 0%, #777 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #777 0%, #777 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #777 0%, #777 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #777 43.75%, #777 81.25%, transparent 81.25%); }
-
-.ic.ic-cloud2:before {
-  width: 0.125em;
-  height: 0.1875em;
-  background-color: #fff;
-  top: 0.5em;
-  left: 0.4375em; }
-
-.ic.ic-cloud2:after {
-  top: 0.375em;
-  left: 0.3125em;
-  height: 0;
-  width: 0;
-  border-style: solid;
-  border-width: 0 0.1875em 0.1875em 0.1875em;
-  background-color: transparent;
-  border-color: transparent transparent #fff transparent; }
-
+/* Status and Notification Icons */
 .ic.ic-check:before {
   width: 0.75em;
   height: 0.375em;
@@ -286,10 +245,8 @@
   top: 0.25em;
   left: 0.125em;
   background: transparent;
-  transform: rotate(-45deg); }
-
-.ic.ic-check:hover:before {
-  border-color: #777; }
+  transform: rotate(-45deg);
+}
 
 .ic.ic-circle-check:before {
   width: 0.5em;
@@ -300,7 +257,8 @@
   top: 0.3125em;
   left: 0.25em;
   background: transparent;
-  transform: rotate(-45deg); }
+  transform: rotate(-45deg);
+}
 
 .ic.ic-circle-check:after {
   background-color: transparent;
@@ -309,10 +267,30 @@
   width: 1em;
   height: 1em;
   top: 0;
-  left: 0; }
+  left: 0;
+}
 
-.ic.ic-circle-check:hover:before, .ic.ic-circle-check:hover:after {
-  border-color: #777; }
+.ic.ic-error {
+  transform: scale(0.65);
+  background-color: #000;
+}
+
+.ic.ic-error:before {
+  width: 1em;
+  height: 1em;
+  transform: scale(2) rotate(0deg);
+}
+
+.ic.ic-error:after {
+  width: 1em;
+  height: 1em;
+  top: 0;
+  background: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%), linear-gradient(135deg, transparent 45%, #000 45%, #000 55%, transparent 55%);
+}
+
+.ic.ic-warning {
+  background-color: transparent;
+}
 
 .ic.ic-comment:after {
   width: 1em;
@@ -320,7 +298,8 @@
   border-radius: 100%;
   background: #000;
   top: 0.0625em;
-  left: 0; }
+  left: 0;
+}
 
 .ic.ic-comment:before {
   border-style: solid;
@@ -328,33 +307,26 @@
   border-color: #000 transparent transparent transparent;
   bottom: 0.0625em;
   right: 0;
-  transform: rotate(-25deg); }
-
-.ic.ic-comment:hover:before {
-  border-color: #777 transparent transparent transparent; }
-
-.ic.ic-comment:hover:after {
-  background-color: #777; }
+  transform: rotate(-25deg);
+}
 
 .ic.ic-calendar {
-  background: linear-gradient(0deg, #fff 6.25%, #000 6.25%, #000 18.75%, transparent 18.75%, transparent 62.5%, #000 62.5%, #000 87.5%, #fff 87.5%), linear-gradient(90deg, #000 12.5%, transparent 12.5%, transparent 87.5%, #000 87.5%); }
+  background: linear-gradient(0deg, #fff 6.25%, #000 6.25%, #000 18.75%, transparent 18.75%, transparent 62.5%, #000 62.5%, #000 87.5%, #fff 87.5%), linear-gradient(90deg, #000 12.5%, transparent 12.5%, transparent 87.5%, #000 87.5%);
+}
 
-.ic.ic-calendar:before, .ic.ic-calendar:after {
+.ic.ic-calendar:before,
+.ic.ic-calendar:after {
   border: 0.0625em solid #000;
   width: 0.1875em;
   height: 0.3125em;
   top: 0;
-  left: 0.125em; }
+  left: 0.125em;
+}
 
 .ic.ic-calendar:after {
   left: auto;
-  right: 0.125em; }
-
-.ic.ic-calendar:hover {
-  background: linear-gradient(0deg, #fff 6.25%, #777 6.25%, #777 18.75%, transparent 18.75%, transparent 62.5%, #777 62.5%, #777 87.5%, #fff 87.5%), linear-gradient(90deg, #777 12.5%, transparent 12.5%, transparent 87.5%, #777 87.5%); }
-
-.ic.ic-calendar:hover:before, .ic.ic-calendar:hover:after {
-  border-color: #777; }
+  right: 0.125em;
+}
 
 .ic.ic-wifi:before {
   width: 0.75em;
@@ -366,7 +338,8 @@
   border-color: #000;
   border-width: 0.375em 0.375em 0 0;
   border-radius: 0 1em 0 0;
-  transform: rotate(-45deg); }
+  transform: rotate(-45deg);
+}
 
 .ic.ic-wifi:after {
   border-radius: 0 1em 0 0;
@@ -375,16 +348,12 @@
   height: 0.25em;
   transform: rotate(-45deg);
   bottom: 0.1875em;
-  left: 0.375em; }
-
-.ic.ic-wifi:hover:before {
-  border-color: #777; }
-
-.ic.ic-wifi:hover:after {
-  background-color: #777; }
+  left: 0.375em;
+}
 
 .ic.ic-bell {
-  background: radial-gradient(circle at 0.4375em 0.8125em, #000 0%, #000 12.5%, transparent 12.5%, transparent 100%), radial-gradient(circle at 0.4375em 0.13em, #000 0%, #000 12.5%, transparent 12.5%, transparent 100%); }
+  background: radial-gradient(circle at 0.4375em 0.8125em, #000 0%, #000 12.5%, transparent 12.5%, transparent 100%), radial-gradient(circle at 0.4375em 0.13em, #000 0%, #000 12.5%, transparent 12.5%, transparent 100%);
+}
 
 .ic.ic-bell:before {
   border-bottom: 0.375em solid #000;
@@ -392,7 +361,8 @@
   border-right: 0.1875em solid transparent;
   height: 0;
   width: 0.875em;
-  top: 0.4375em; }
+  top: 0.4375em;
+}
 
 .ic.ic-bell:after {
   top: 0.125em;
@@ -402,10 +372,1070 @@
   border-bottom: 0.375em solid #000;
   border-left: 0em solid transparent;
   border-right: 0em solid transparent;
-  height: 0; }
+  height: 0;
+}
 
-.ic.ic-bell:hover {
-  background: radial-gradient(circle at 0.4375em 0.8125em, #777 0%, #777 12.5%, transparent 12.5%, transparent 100%), radial-gradient(circle at 0.4375em 0.13em, #777 0%, #777 12.5%, transparent 12.5%, transparent 100%); }
+/* Network and Connectivity Icons */
+.ic.ic-cloud {
+  background: radial-gradient(circle at 0.6875em 0.41563em, #000 0%, #000 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #000 0%, #000 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #000 43.75%, #000 81.25%, transparent 81.25%);
+}
 
-.ic.ic-bell:hover:before, .ic.ic-bell:hover:after {
-  border-bottom: 0.375em solid #777; }
+.ic.ic-cloud2 {
+  background: radial-gradient(circle at 0.6875em 0.41563em, #000 0%, #000 17%, transparent 21%, transparent 100%), radial-gradient(circle at 0.41563em 0.41563em, #000 0%, #000 30%, transparent 33%, transparent 100%), radial-gradient(circle at 0.2em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), radial-gradient(circle at 0.8em 0.625em, #000 0%, #000 17%, transparent 20%, transparent 100%), linear-gradient(90deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(transparent 43.75%, #000 43.75%, #000 81.25%, transparent 81.25%);
+}
+
+.ic.ic-cloud2:before {
+  width: 0.125em;
+  height: 0.1875em;
+  background-color: #fff;
+  top: 0.5em;
+  left: 0.4375em;
+}
+
+.ic.ic-cloud2:after {
+  top: 0.375em;
+  left: 0.3125em;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0 0.1875em 0.1875em 0.1875em;
+  background-color: transparent;
+  border-color: transparent transparent #fff transparent;
+}
+
+/* Basic Shapes and Symbols */
+.ic.ic-arrow-up:before {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-arrow-down:before {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-arrow-left:before {
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-right: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-arrow-right:before {
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-arrow-diagonal:before {
+  width: 0.75em;
+  height: 0.75em;
+  border-left: 0.125em solid #000;
+  border-bottom: 0.125em solid #000;
+  transform: rotate(45deg);
+  top: 0.125em;
+}
+
+.ic.ic-arrow-curved:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-45deg);
+  top: 0.125em;
+}
+
+.ic.ic-heart:before {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(45deg);
+  top: 0.25em;
+  left: 0.25em;
+}
+
+.ic.ic-heart:after {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(45deg);
+  top: 0.25em;
+  left: 0;
+}
+
+.ic.ic-star:before {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-star:after {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-circle:before {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.ic.ic-square:before {
+  width: 1em;
+  height: 1em;
+  background-color: #000;
+}
+
+.ic.ic-triangle-up:before {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.75em solid #000;
+  top: 0.125em;
+}
+
+.ic.ic-triangle-down:before {
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.75em solid #000;
+  top: 0.125em;
+}
+
+/* User Interface Icons */
+.ic.ic-kebab-menu:before {
+  width: 0.125em;
+  height: 0.125em;
+  background-color: #000;
+  border-radius: 50%;
+  top: 0.125em;
+  left: 0.4375em;
+}
+
+.ic.ic-kebab-menu:after {
+  width: 0.125em;
+  height: 0.125em;
+  background-color: #000;
+  border-radius: 50%;
+  top: 0.4375em;
+  left: 0.4375em;
+}
+
+.ic.ic-plus:before {
+  width: 1em;
+  height: 0.125em;
+  background-color: #000;
+  top: 0.4375em;
+}
+
+.ic.ic-plus:after {
+  width: 0.125em;
+  height: 1em;
+  background-color: #000;
+  left: 0.4375em;
+}
+
+.ic.ic-home:before {
+  width: 0.75em;
+  height: 0.75em;
+  background-color: #000;
+  border-radius: 0 0 0.125em 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-home:after {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #000;
+  border-radius: 50%;
+  top: 0.25em;
+  left: 0.25em;
+}
+
+.ic.ic-back-arrow:before {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  transform: rotate(45deg);
+  top: 0.4375em;
+}
+
+.ic.ic-back-arrow:after {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.4375em;
+}
+
+.ic.ic-forward-arrow:before {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.4375em;
+}
+
+.ic.ic-forward-arrow:after {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  transform: rotate(45deg);
+  top: 0.4375em;
+}
+
+.ic.ic-refresh:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-45deg);
+  top: 0.125em;
+}
+
+.ic.ic-search:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-search:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-gear:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-gear:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-sliders:before {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  top: 0.4375em;
+}
+
+.ic.ic-sliders:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  top: 0.125em;
+  left: 0.4375em;
+}
+
+.ic.ic-speech-bubble:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-speech-bubble:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-volume:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-volume:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-collapse:before {
+  width: 0.75em;
+  height: 0.125em;
+  background-color: #000;
+  top: 0.4375em;
+}
+
+.ic.ic-collapse:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  top: 0.125em;
+  left: 0.4375em;
+}
+
+/* Social Media Icons */
+.ic.ic-facebook:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-facebook:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-twitter:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-twitter:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-instagram:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-instagram:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-linkedin:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-linkedin:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-youtube:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-youtube:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-pinterest:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-pinterest:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-share:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-share:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-link:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 50%;
+  top: 0.125em;
+}
+
+.ic.ic-link:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+/* File and Folder Icons */
+.ic.ic-document:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-document:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-pdf:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-pdf:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-image:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-image:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-video:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-video:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-audio:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-audio:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-folder:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-folder:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-folder-open:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-folder-open:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+/* E-commerce and Shopping Icons */
+.ic.ic-cart:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-cart:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-bag:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-bag:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-credit-card:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-credit-card:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-dollar:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-dollar:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-coin:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-coin:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-truck:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-truck:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+.ic.ic-package:before {
+  width: 0.75em;
+  height: 0.75em;
+  border: 0.125em solid #000;
+  border-radius: 0.125em;
+  top: 0.125em;
+}
+
+.ic.ic-package:after {
+  width: 0.125em;
+  height: 0.5em;
+  background-color: #000;
+  transform: rotate(-45deg);
+  top: 0.75em;
+  left: 0.75em;
+}
+
+/* Weather Icons */
+
+
+ /* Miscellaneous Icons */
+ .icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.ic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  position: relative;
+}
+
+.ic:before {
+  content: "";
+  position: absolute;
+  background-color: #333;
+}
+
+/* Microphone Icon */
+.ic-microphone:before {
+  width: 8px;
+  height: 15px;
+  top: 10px;
+  border-radius: 5px;
+}
+.ic-microphone {
+  position: relative;
+}
+.ic-microphone:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 20px;
+  height: 8px;
+  border-radius: 5px;
+}
+
+/* Camera Icon */
+.ic-camera:before {
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  border-radius: 3px;
+}
+.ic-camera {
+  position: relative;
+}
+.ic-camera:after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Flash Icon */
+.ic-flash:before {
+  width: 5px;
+  height: 18px;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Lock Icon */
+.ic-lock:before {
+  width: 10px;
+  height: 15px;
+  top: 5px;
+  border-radius: 2px;
+}
+.ic-lock:after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 18px;
+  height: 8px;
+  border-radius: 3px;
+}
+
+/* Unlock Icon */
+.ic-unlock:before {
+  width: 10px;
+  height: 15px;
+  top: 5px;
+  border-radius: 2px;
+}
+.ic-unlock:after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 18px;
+  height: 8px;
+  border-radius: 3px;
+}
+
+/* Battery Icon */
+.ic-battery:before {
+  width: 20px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* Map Pin Icon */
+.ic-map-pin:before {
+  width: 10px;
+  height: 15px;
+  border-radius: 5px 5px 0 0;
+  top: 5px;
+}
+.ic-map-pin:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 4px;
+  width: 8px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Compass Icon */
+.ic-compass:before {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+.ic-compass:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 10px;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+}
+
+/* Clock Icon */
+.ic-clock:before {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+.ic-clock:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+}
+
+/* Hourglass Icon */
+.ic-hourglass:before {
+  width: 10px;
+  height: 18px;
+  top: 5px;
+  border-radius: 2px;
+}
+
+/* Wrench Icon */
+.ic-wrench:before {
+  width: 3px;
+  height: 20px;
+  top: 5px;
+  transform: rotate(45deg);
+}
+.ic-wrench:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  width: 20px;
+  height: 3px;
+  background-color: #333;
+}
+
+/* Screwdriver Icon */
+.ic-screwdriver:before {
+  width: 3px;
+  height: 20px;
+  top: 5px;
+}
+.ic-screwdriver:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  width: 20px;
+  height: 3px;
+  background-color: #333;
+}
+
+/* Hammer Icon */
+.ic-hammer:before {
+  width: 10px;
+  height: 3px;
+  top: 5px;
+}
+.ic-hammer:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  width: 3px;
+  height: 10px;
+  background-color: #333;
+}
+
+/* Base styles for all icons */
+.ic {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px; /* Hide text */
+  position: relative;
+}
+
+/* Spinner Icon */
+.ic-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dots Loading Icon */
+.ic-dots-loading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.ic-dots-loading::before,
+.ic-dots-loading::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.ic-dots-loading::before {
+  animation-delay: -0.32s;
+}
+
+.ic-dots-loading::after {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Progress Bar Icon */
+.ic-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ic-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #000;
+  animation: progress 2s linear infinite;
+}
+
+@keyframes progress {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Heart Beat Icon */
+.ic-heart-beat {
+  background-color: #ff4d4d;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: heartbeat 1.4s linear infinite;
+}
+
+.ic-heart-beat::before,
+.ic-heart-beat::after {
+  content: '';
+  background-color: #ff4d4d;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+.ic-heart-beat::before {
+  top: -10px;
+  left: 0;
+}
+
+.ic-heart-beat::after {
+  top: 0;
+  left: 10px;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1) rotate(-45deg); }
+  25% { transform: scale(1.1) rotate(-45deg); }
+  50% { transform: scale(1) rotate(-45deg); }
+  75% { transform: scale(1.1) rotate(-45deg); }
+  100% { transform: scale(1) rotate(-45deg); }
+}
